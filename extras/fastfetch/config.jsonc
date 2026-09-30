@@ -1,4 +1,4 @@
-// Tsukiyo for fastfetch: a small pagoda, a quiet column of facts.
+// Tsukiyo for fastfetch: a torii in still water under the crescent moon, a quiet column of facts.
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
@@ -7,7 +7,9 @@
     "color": {
       "1": "38;2;136;164;173",
       "2": "38;2;184;151;122",
-      "3": "38;2;74;90;99"
+      "3": "38;2;74;90;99",
+      "4": "38;2;196;180;138",
+      "5": "38;2;179;122;114"
     },
     "padding": { "top": 1, "left": 2, "right": 4 }
   },
