@@ -1,10 +1,33 @@
 # Tsukiyo 月夜 for Omarchy
 
-![Tsukiyo: the koi in fastfetch and Neovim on the castle wallpaper](preview.png)
+![Tsukiyo with fastfetch, Neovim, cava and btop](screenshots/apps.png)
 
 *Tsukiyo* means a moonlit night. A calm, dark Omarchy theme: blue-teal ink, parchment
 text, a mist-slate accent, and warm moonlight kept for the small details. Minimal, but
-crafted down to the lock screen and the bar icons.
+crafted down to the lock screen and the bar icons. Above: fastfetch with the koi, Neovim,
+cava and btop.
+
+## Screenshots
+
+### Desktop
+
+The bare desktop: the night-blue bar with its hairline icons, the Dynamic Island at the
+top, and the castle wallpaper the palette was sampled from.
+
+![Tsukiyo desktop with no apps open](screenshots/desktop.png)
+
+### Lock screen
+
+A thin serif clock over the drifting, blurred wallpaper, 月夜 between hairlines, and a
+single hairline for the password.
+
+![Tsukiyo lock screen](screenshots/lock.png)
+
+### Boot screen
+
+Two koi circling, one in moonlight and one in mist, above 月夜.
+
+![Tsukiyo boot unlock screen](preview-unlock.png)
 
 ## Install
 
@@ -47,14 +70,12 @@ It never installs packages and never changes your cursor or icon theme.
 
 ## Boot screen
 
-Tsukiyo ships an `unlock.png` for the disk-unlock screen: two koi circling, one in moonlight
-and one in mist, above 月夜 between hairlines. The same koi greet you in fastfetch.
+Tsukiyo ships an `unlock.png` for the disk-unlock screen (shown above under Screenshots).
+To use it:
 
 ```bash
 omarchy plymouth set by theme tsukiyo
 ```
-
-![Tsukiyo unlock screen](preview-unlock.png)
 
 ## Palette
 
