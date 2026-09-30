@@ -247,19 +247,20 @@ Item {
         }
       }
 
-      // 城 between two hairlines: the castle, signed like a print
+      // 月夜 between two hairlines, signed like a print (as on the boot screen)
       Row {
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 14 * root.unit
 
         Rectangle { width: 44 * root.unit; height: 1; color: root.faint; anchors.verticalCenter: parent.verticalCenter }
         Text {
-          text: "城"
+          text: "月夜"
           color: root.mist
           opacity: 0.85
           font.family: root.serif
           font.weight: Font.Light
           font.pixelSize: 18 * root.unit
+          font.letterSpacing: 6 * root.unit
         }
         Rectangle { width: 44 * root.unit; height: 1; color: root.faint; anchors.verticalCenter: parent.verticalCenter }
       }
