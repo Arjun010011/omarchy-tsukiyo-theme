@@ -10,7 +10,7 @@ target="$HOME/.config/omarchy/themes/$slug"
 
 excludes=(--exclude .git --exclude .gitignore --exclude dev-install.sh
           --exclude theme.slug --exclude CLAUDE.md --exclude README.md --exclude LICENSE
-          --exclude screenshots)
+          --exclude screenshots --exclude .github)
 if [[ ${1:-} == --as-installed ]]; then
   excludes+=(--exclude '*.lua' --exclude alacritty.toml --exclude foot.ini
              --exclude ghostty.conf --exclude kitty.conf --exclude vscode.json)

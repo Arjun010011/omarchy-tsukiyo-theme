@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 30" width="1200" height="30" role="img" aria-label="">
+  <style>
+    .g { animation: g 7s ease-in-out infinite; }
+    @keyframes g { 0% { transform: translateX(-160px); opacity: 0 } 12% { opacity: 1 } 70% { transform: translateX(1200px); opacity: 0 } 100% { opacity: 0 } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#6a7175" stop-opacity="0"/><stop offset=".5" stop-color="#6a7175"/><stop offset="1" stop-color="#6a7175" stop-opacity="0"/></linearGradient>
+    <linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#88a4ad" stop-opacity="0"/><stop offset=".5" stop-color="#88a4ad"/><stop offset="1" stop-color="#88a4ad" stop-opacity="0"/></linearGradient>
+    <mask id="line"><rect x="0" y="14" width="574" height="2" fill="#fff"/><rect x="626" y="14" width="574" height="2" fill="#fff"/></mask>
+  </defs>
+  <rect x="0" y="14" width="1200" height="2" fill="url(#fade)" mask="url(#line)"/>
+  <rect class="g" x="0" y="13.5" width="220" height="3" fill="url(#gl)" mask="url(#line)"/>
+  <g  fill="#88a4ad" transform="translate(591.0 21.5) scale(0.01800 -0.01800)"><path transform="translate(0 0)" d="M716 731V536H308V731ZM255 761V448C255 244 222 72 48 -62L62 -75C214 17 274 143 296 277H716V22C716 4 710 -3 688 -3C664 -3 543 7 543 7V-10C594 -16 625 -23 641 -33C656 -43 663 -58 667 -75C760 -66 770 -32 770 15V720C790 723 807 732 814 740L736 799L706 761H320L255 791ZM716 506V306H300C306 353 308 401 308 449V506Z"/></g>
+</svg>
