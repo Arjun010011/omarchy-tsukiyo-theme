@@ -1,0 +1,120 @@
+--- Bar.qml	2026-09-16 02:34:52.000000000 +0530
++++ Bar.qml	2026-09-29 23:04:16.003266871 +0530
+@@ -68,7 +68,9 @@
+   // Resolves through fontconfig at paint time (Style.font.family defaults
+   // to "monospace"), so changing the system font (via `omarchy-font-set`)
+   // updates the bar without a reload.
+-  property string fontFamily: Style.font.family
++  // Tsukiyo: Adwaita Sans (variable, installed with GTK) for a calm, clean
++  // bar; icon glyphs fall back to the Nerd Font automatically.
++  property string fontFamily: "Adwaita Sans"
+   // Bound to the central Color singleton so the bar tracks shell.toml's
+   // [bar] section. Property names kept for the rest of this file's bindings.
+   property color themeForeground: Color.bar.text
+@@ -555,6 +557,12 @@
+   readonly property bool vertical: position === "left" || position === "right"
+   readonly property int barSize: vertical ? Style.bar.sizeVertical : Style.bar.sizeHorizontal
+ 
++  // Tsukiyo: a full-width glass strip on the screen edge. edgeGap and
++  // sideGap can lift it into a floating slab; both are 0 by choice.
++  readonly property int edgeGap: 0
++  readonly property int sideGap: 0
++  readonly property int panelExtent: barSize + edgeGap
++
+   function normalizePosition(value) {
+     return BarModel.normalizePosition(value)
+   }
+@@ -1248,10 +1256,10 @@
+     }
+ 
+     margins {
+-      top: root.barHidden && root.position === "top" ? -root.barSize : 0
+-      bottom: root.barHidden && root.position === "bottom" ? -root.barSize : 0
+-      left: root.barHidden && root.position === "left" ? -root.barSize : 0
+-      right: root.barHidden && root.position === "right" ? -root.barSize : 0
++      top: root.barHidden && root.position === "top" ? -root.panelExtent : 0
++      bottom: root.barHidden && root.position === "bottom" ? -root.panelExtent : 0
++      left: root.barHidden && root.position === "left" ? -root.panelExtent : 0
++      right: root.barHidden && root.position === "right" ? -root.panelExtent : 0
+     }
+ 
+     anchors {
+@@ -1261,15 +1269,74 @@
+       right: root.position === "right" || !root.vertical
+     }
+ 
+-    implicitWidth: root.vertical ? root.barSize : 0
+-    implicitHeight: root.vertical ? 0 : root.barSize
+-    color: root.transparent ? "transparent" : root.background
++    implicitWidth: root.vertical ? root.panelExtent : 0
++    implicitHeight: root.vertical ? 0 : root.panelExtent
++    color: "transparent"
++    // Only the slab takes input; clicks in the gap reach the desktop.
++    mask: Region { item: slab }
+     surfaceFormat.opaque: false
+     WlrLayershell.namespace: "omarchy-bar"
+     WlrLayershell.layer: WlrLayer.Top
+ 
+-    Loader {
++    Rectangle {
++      id: slab
+       anchors.fill: parent
++      anchors.topMargin: root.position === "top" ? root.edgeGap : (root.vertical ? root.sideGap : 0)
++      anchors.bottomMargin: root.position === "bottom" ? root.edgeGap : (root.vertical ? root.sideGap : 0)
++      anchors.leftMargin: root.position === "left" ? root.edgeGap : (root.vertical ? 0 : root.sideGap)
++      anchors.rightMargin: root.position === "right" ? root.edgeGap : (root.vertical ? 0 : root.sideGap)
++      radius: root.edgeGap > 0 ? Math.min(Style.cornerRadius + 2, Math.min(width, height) / 2) : 0
++      color: root.transparent ? "transparent" : root.background
++      border.width: root.transparent || root.edgeGap === 0 ? 0 : 1
++      border.color: Util.alpha("#a2b3c1", root.barHovered ? 0.20 : 0.10)
++      Behavior on border.color { ColorAnimation { duration: 420; easing.type: Easing.OutCubic } }
++      Behavior on color { ColorAnimation { duration: 300 } }
++
++      // Faint top-lit sheen, so the slab reads as glass rather than a flat fill.
++      Rectangle {
++        visible: !root.transparent
++        anchors.fill: parent
++        anchors.margins: 1
++        radius: Math.max(0, parent.radius - 1)
++        gradient: Gradient {
++          orientation: root.vertical ? Gradient.Horizontal : Gradient.Vertical
++          GradientStop { position: 0.0; color: Util.alpha(Color.foreground, 0.045) }
++          GradientStop { position: 0.55; color: "transparent" }
++          GradientStop { position: 1.0; color: Util.alpha("#000000", 0.10) }
++        }
++      }
++
++      // Hairline on the edge facing the desktop.
++      Rectangle {
++        visible: !root.transparent
++        x: root.vertical ? (root.position === "left" ? parent.width - 1 : 0) : 0
++        y: root.vertical ? 0 : (root.position === "bottom" ? 0 : parent.height - 1)
++        width: root.vertical ? 1 : parent.width
++        height: root.vertical ? parent.height : 1
++        color: Util.alpha("#a2b3c1", root.barHovered ? 0.16 : 0.08)
++        Behavior on color { ColorAnimation { duration: 420; easing.type: Easing.OutCubic } }
++      }
++
++      // A thread of mist along the same edge; it brightens on hover.
++      Rectangle {
++        visible: !root.transparent
++        x: root.vertical ? (root.position === "left" ? parent.width - 1 : 0) : parent.width * 0.2
++        y: root.vertical ? parent.height * 0.2 : (root.position === "bottom" ? 0 : parent.height - 1)
++        width: root.vertical ? 1 : parent.width * 0.6
++        height: root.vertical ? parent.height * 0.6 : 1
++        opacity: root.barHovered ? 1 : 0.55
++        Behavior on opacity { NumberAnimation { duration: 520; easing.type: Easing.OutCubic } }
++        gradient: Gradient {
++          orientation: root.vertical ? Gradient.Vertical : Gradient.Horizontal
++          GradientStop { position: 0.0; color: "transparent" }
++          GradientStop { position: 0.5; color: Util.alpha(Color.accent, 0.38) }
++          GradientStop { position: 1.0; color: "transparent" }
++        }
++      }
++    }
++
++    Loader {
++      anchors.fill: slab
+       sourceComponent: root.vertical ? verticalBar : horizontalBar
+ 
+       // A child of the loader, not a sibling of the sections: an ancestor stays

@@ -1,0 +1,26 @@
+/* Tsukiyo for Zen's own pages (new tab, settings, about: pages).
+   Imported from userContent.css by install-extras.sh. */
+
+@-moz-document url-prefix("about:") {
+  :root {
+    --newtab-background-color: #121820 !important;
+    --newtab-background-color-secondary: #1a222b !important;
+    --newtab-text-primary-color: #c8c4bb !important;
+    --in-content-page-background: #121820 !important;
+    --in-content-page-color: #c8c4bb !important;
+    --in-content-box-background: #1a222b !important;
+    --in-content-box-border-color: rgba(157, 180, 173, 0.12) !important;
+    --in-content-item-hover: rgba(157, 180, 173, 0.08) !important;
+    --in-content-item-selected: #243039 !important;
+    --in-content-primary-button-background: #88a4ad !important;
+    --in-content-primary-button-background-hover: #9db4ad !important;
+    --in-content-primary-button-text-color: #121820 !important;
+    --in-content-accent-color: #88a4ad !important;
+    --in-content-link-color: #88a4ad !important;
+    --in-content-focus-outline-color: #88a4ad !important;
+    --color-accent-primary: #88a4ad !important;
+    --background-color-canvas: #121820 !important;
+    --text-color: #c8c4bb !important;
+  }
+  body { background-color: #121820 !important; color: #c8c4bb !important; }
+}

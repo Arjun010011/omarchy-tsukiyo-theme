@@ -1,0 +1,123 @@
+/* Tsukiyo for Zen Browser.
+   Imported from userChrome.css by install-extras.sh; remove that @import line to undo.
+   Palette: night ink surfaces, parchment text, night-blue selection, mist accent. */
+
+:root,
+#main-window,
+#browser {
+  --cm-ink: #121820;
+  --cm-ink-deep: #0e1319;
+  --cm-ink-raised: #1a222b;
+  --cm-sea: #0c1624;
+  --cm-sel: #243039;
+  --cm-fog: #4a5a63;
+  --cm-dim: #6a7175;
+  --cm-text: #c8c4bb;
+  --cm-text-soft: #b3b0a8;
+  --cm-mist: #88a4ad;
+  --cm-sage: #a2b3c1;
+
+  color-scheme: dark !important;
+
+  --zen-primary-color: var(--cm-mist) !important;
+  --zen-colors-primary: var(--cm-sel) !important;
+  --zen-colors-secondary: var(--cm-ink-raised) !important;
+  --zen-colors-tertiary: var(--cm-ink-deep) !important;
+  --zen-colors-hover-bg: color-mix(in srgb, var(--cm-sage) 8%, transparent) !important;
+  --zen-colors-primary-foreground: var(--cm-text) !important;
+  --zen-colors-border: color-mix(in srgb, var(--cm-sage) 10%, transparent) !important;
+  --zen-colors-border-contrast: color-mix(in srgb, var(--cm-sage) 16%, transparent) !important;
+  --zen-colors-input-bg: var(--cm-ink-deep) !important;
+  --zen-dialog-background: var(--cm-ink) !important;
+  --zen-in-content-dialog-background: var(--cm-ink) !important;
+  --zen-urlbar-background: var(--cm-ink-raised) !important;
+  --zen-toolbar-element-bg: color-mix(in srgb, var(--cm-sage) 6%, transparent) !important;
+  --zen-toolbar-element-bg-hover: color-mix(in srgb, var(--cm-sage) 12%, transparent) !important;
+  --zen-input-border-color: var(--cm-fog) !important;
+  --zen-main-browser-background: linear-gradient(170deg, var(--cm-sea) 0%, var(--cm-ink) 55%, var(--cm-ink-deep) 100%) !important;
+  --zen-main-browser-background-toolbar: var(--cm-ink) !important;
+  --zen-themed-toolbar-bg-transparent: var(--cm-ink) !important;
+  --zen-sidebar-themed-icon-fill: var(--cm-sage) !important;
+  --zen-appcontent-border: 1px solid color-mix(in srgb, var(--cm-sage) 9%, transparent) !important;
+
+  /* Firefox tokens Zen still reads */
+  --toolbar-bgcolor: var(--cm-ink) !important;
+  --toolbar-color: var(--cm-text) !important;
+  --toolbar-field-background-color: var(--cm-ink-raised) !important;
+  --toolbar-field-focus-background-color: var(--cm-ink-deep) !important;
+  --toolbar-field-color: var(--cm-text) !important;
+  --toolbar-field-focus-color: var(--cm-text) !important;
+  --toolbar-field-focus-border-color: var(--cm-mist) !important;
+  --toolbarbutton-icon-fill: var(--cm-sage) !important;
+  --lwt-text-color: var(--cm-text) !important;
+  --lwt-sidebar-background-color: var(--cm-ink-deep) !important;
+  --lwt-sidebar-text-color: var(--cm-text-soft) !important;
+  --tab-selected-bgcolor: color-mix(in srgb, var(--cm-sage) 12%, var(--cm-ink)) !important;
+  --tab-selected-textcolor: var(--cm-text) !important;
+  --focus-outline-color: var(--cm-mist) !important;
+  --arrowpanel-background: var(--cm-ink) !important;
+  --arrowpanel-color: var(--cm-text) !important;
+  --arrowpanel-border-color: color-mix(in srgb, var(--cm-sage) 12%, transparent) !important;
+  --panel-separator-color: color-mix(in srgb, var(--cm-sage) 10%, transparent) !important;
+  --urlbarView-highlight-background: var(--cm-sel) !important;
+  --urlbarView-highlight-color: var(--cm-text) !important;
+  --autocomplete-popup-highlight-background: var(--cm-sel) !important;
+  --autocomplete-popup-highlight-color: var(--cm-text) !important;
+  --link-color: var(--cm-mist) !important;
+}
+
+/* The window behind the web page: a faint night-blue wash into ink */
+#browser,
+#navigator-toolbox,
+#zen-main-app-wrapper {
+  background: var(--zen-main-browser-background) !important;
+}
+
+/* Tabs: quiet by default, a blue-mist pill with a mist edge when selected */
+.tabbrowser-tab .tab-background {
+  border-radius: 8px !important;
+  transition: background-color 220ms ease, box-shadow 220ms ease !important;
+}
+.tabbrowser-tab:hover .tab-background:not([selected]) {
+  background-color: color-mix(in srgb, var(--cm-sage) 7%, transparent) !important;
+}
+.tabbrowser-tab .tab-background:is([selected], [multiselected]) {
+  background-color: var(--tab-selected-bgcolor) !important;
+  box-shadow: inset 2px 0 0 color-mix(in srgb, var(--cm-mist) 70%, transparent),
+              0 1px 6px rgba(0, 0, 0, 0.25) !important;
+}
+.tabbrowser-tab .tab-label { color: var(--cm-text-soft) !important; }
+.tabbrowser-tab[selected] .tab-label { color: var(--cm-text) !important; }
+
+/* URL bar: ink field, mist ring on focus */
+#urlbar-background {
+  background-color: var(--cm-ink-raised) !important;
+  border: 1px solid color-mix(in srgb, var(--cm-sage) 10%, transparent) !important;
+  transition: border-color 220ms ease, background-color 220ms ease !important;
+}
+#urlbar[focused] #urlbar-background,
+#urlbar[open] #urlbar-background {
+  background-color: var(--cm-ink-deep) !important;
+  border-color: color-mix(in srgb, var(--cm-mist) 55%, transparent) !important;
+}
+#urlbar-input::selection { background-color: var(--cm-sel) !important; }
+
+/* Menus and panels */
+menupopup, panel {
+  --panel-background: var(--cm-ink) !important;
+  --panel-color: var(--cm-text) !important;
+  --panel-border-color: color-mix(in srgb, var(--cm-sage) 12%, transparent) !important;
+}
+menupopup menuitem[_moz-menuactive],
+menupopup menu[_moz-menuactive] {
+  background-color: var(--cm-sel) !important;
+  color: var(--cm-text) !important;
+}
+
+/* The page frame: a hairline instead of a heavy border */
+#tabbrowser-tabbox,
+.browserSidebarContainer {
+  outline-color: color-mix(in srgb, var(--cm-sage) 9%, transparent) !important;
+}
+
+::selection { background-color: var(--cm-sel) !important; color: var(--cm-text) !important; }

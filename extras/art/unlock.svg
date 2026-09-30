@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520">
+  <!-- Tsukiyo unlock logo: a pagoda under the moon. Rendered to unlock.png. -->
+  <defs>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g fill="#88a4ad" filter="url(#glow)">
+    <!-- moon -->
+    <circle cx="700" cy="92" r="30"/>
+    <!-- finial -->
+    <rect x="546" y="40" width="8" height="48" rx="3"/>
+    <circle cx="550" cy="38" r="8"/>
+    <!-- top roof -->
+    <path d="M450 150 Q500 128 522 96 L578 96 Q600 128 650 150 Q628 150 610 146 L490 146 Q472 150 450 150 Z"/>
+    <!-- top body -->
+    <rect x="506" y="152" width="88" height="42" rx="3"/>
+    <!-- middle roof -->
+    <path d="M404 244 Q466 222 492 194 L608 194 Q634 222 696 244 Q668 244 646 240 L454 240 Q432 244 404 244 Z"/>
+    <!-- middle body -->
+    <rect x="480" y="246" width="140" height="50" rx="3"/>
+    <!-- bottom roof -->
+    <path d="M356 350 Q430 324 462 296 L638 296 Q670 324 744 350 Q712 350 686 346 L414 346 Q388 350 356 350 Z"/>
+    <!-- bottom body with a door -->
+    <path d="M448 352 L652 352 L652 420 L574 420 L574 380 Q550 364 526 380 L526 420 L448 420 Z"/>
+    <!-- stone base -->
+    <rect x="410" y="424" width="280" height="16" rx="4"/>
+    <rect x="380" y="446" width="340" height="12" rx="4"/>
+  </g>
+</svg>

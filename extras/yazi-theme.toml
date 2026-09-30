@@ -1,0 +1,90 @@
+# Tsukiyo for yazi. install-extras.sh copies this to ~/.config/yazi/theme.toml.
+
+[mgr]
+cwd = { fg = "#88a4ad" }
+hovered = { fg = "#d8d4cc", bg = "#243039" }
+preview_hovered = { fg = "#d8d4cc", bg = "#1a222b" }
+find_keyword = { fg = "#c4b48a", bold = true }
+find_position = { fg = "#88a4ad", bg = "#1a222b" }
+marker_copied = { fg = "#8ca483", bg = "#8ca483" }
+marker_cut = { fg = "#b37a72", bg = "#b37a72" }
+marker_marked = { fg = "#9c8898", bg = "#9c8898" }
+marker_selected = { fg = "#88a4ad", bg = "#88a4ad" }
+count_copied = { fg = "#121820", bg = "#8ca483" }
+count_cut = { fg = "#121820", bg = "#b37a72" }
+count_selected = { fg = "#121820", bg = "#88a4ad" }
+border_symbol = "│"
+border_style = { fg = "#1a222b" }
+
+[tabs]
+active = { fg = "#121820", bg = "#88a4ad" }
+inactive = { fg = "#6a7175", bg = "#0e1319" }
+
+[mode]
+normal_main = { fg = "#121820", bg = "#88a4ad", bold = true }
+normal_alt = { fg = "#88a4ad", bg = "#1a222b" }
+select_main = { fg = "#121820", bg = "#9c8898", bold = true }
+select_alt = { fg = "#9c8898", bg = "#1a222b" }
+unset_main = { fg = "#121820", bg = "#b37a72", bold = true }
+unset_alt = { fg = "#b37a72", bg = "#1a222b" }
+
+[status]
+overall = { fg = "#b3b0a8", bg = "#0e1319" }
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+progress_label = { fg = "#c8c4bb", bold = true }
+progress_normal = { fg = "#88a4ad", bg = "#1a222b" }
+progress_error = { fg = "#b37a72", bg = "#1a222b" }
+perm_sep = { fg = "#4a5a63" }
+perm_type = { fg = "#7a98ab" }
+perm_read = { fg = "#c4b48a" }
+perm_write = { fg = "#b37a72" }
+perm_exec = { fg = "#8ca483" }
+
+[input]
+border = { fg = "#4a5a63" }
+title = { fg = "#88a4ad" }
+value = { fg = "#c8c4bb" }
+selected = { bg = "#243039" }
+
+[pick]
+border = { fg = "#4a5a63" }
+active = { fg = "#88a4ad", bold = true }
+inactive = { fg = "#b3b0a8" }
+
+[confirm]
+border = { fg = "#4a5a63" }
+title = { fg = "#88a4ad" }
+btn_yes = { fg = "#121820", bg = "#88a4ad" }
+btn_no = { fg = "#b3b0a8" }
+
+[tasks]
+border = { fg = "#4a5a63" }
+title = { fg = "#88a4ad" }
+hovered = { fg = "#d8d4cc", bg = "#243039" }
+
+[which]
+mask = { bg = "#0e1319" }
+cand = { fg = "#88a4ad" }
+rest = { fg = "#6a7175" }
+desc = { fg = "#b3b0a8" }
+separator = "  "
+separator_style = { fg = "#4a5a63" }
+
+[help]
+on = { fg = "#88a4ad" }
+run = { fg = "#9c8898" }
+desc = { fg = "#b3b0a8" }
+hovered = { bg = "#243039" }
+footer = { fg = "#6a7175", bg = "#0e1319" }
+
+[filetype]
+rules = [
+  { mime = "image/*", fg = "#9c8898" },
+  { mime = "video/*", fg = "#7a98ab" },
+  { mime = "audio/*", fg = "#7fa3a3" },
+  { mime = "application/{zip,gzip,x-tar,x-bzip*,x-7z-compressed,x-xz,x-rar}", fg = "#c4b48a" },
+  { mime = "application/pdf", fg = "#b8977a" },
+  { url = "*/", fg = "#7a98ab" },
+  { url = "*", fg = "#c8c4bb" },
+]

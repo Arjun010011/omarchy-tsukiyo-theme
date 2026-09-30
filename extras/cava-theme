@@ -1,0 +1,11 @@
+# Tsukiyo for cava: bars rise from night ink through mist into parchment.
+[color]
+gradient = 1
+gradient_color_1 = '#243039'
+gradient_color_2 = '#34505a'
+gradient_color_3 = '#4f6f7a'
+gradient_color_4 = '#6b8a94'
+gradient_color_5 = '#88a4ad'
+gradient_color_6 = '#a3b7b9'
+gradient_color_7 = '#bcc2bd'
+gradient_color_8 = '#d8d4cc'

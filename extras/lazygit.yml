@@ -1,0 +1,16 @@
+# Tsukiyo for lazygit. install-extras.sh merges this into ~/.config/lazygit/config.yml.
+gui:
+  border: rounded
+  theme:
+    activeBorderColor: ["#88a4ad", "bold"]
+    inactiveBorderColor: ["#28323a"]
+    searchingActiveBorderColor: ["#c4b48a", "bold"]
+    optionsTextColor: ["#7a98ab"]
+    selectedLineBgColor: ["#243039"]
+    inactiveViewSelectedLineBgColor: ["#1a222b"]
+    cherryPickedCommitFgColor: ["#121820"]
+    cherryPickedCommitBgColor: ["#9c8898"]
+    markedBaseCommitFgColor: ["#121820"]
+    markedBaseCommitBgColor: ["#c4b48a"]
+    unstagedChangesColor: ["#b37a72"]
+    defaultFgColor: ["#c8c4bb"]

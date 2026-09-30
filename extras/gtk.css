@@ -1,0 +1,197 @@
+/* Tsukiyo 月夜 for GTK 3 and 4 (libadwaita).
+ *
+ * Moonlit ink surfaces, parchment text, and hairlines instead of boxes. The mist
+ * accent marks only what has focus or is chosen; everything else stays quiet.
+ * Most of the work is done through libadwaita's named colours, so apps keep their
+ * own layout and only the light changes. install-extras.sh copies this file to
+ * ~/.config/gtk-3.0/gtk.css and ~/.config/gtk-4.0/gtk.css.
+ */
+
+/* Palette */
+@define-color ts_ink        #121820;
+@define-color ts_ink_deep   #0e1319;
+@define-color ts_ink_raised #1a222b;
+@define-color ts_slate      #243039;
+@define-color ts_hairline   #28323a;
+@define-color ts_muted      #4a5a63;
+@define-color ts_dim        #6a7175;
+@define-color ts_parchment  #c8c4bb;
+@define-color ts_moonlight  #d8d4cc;
+@define-color ts_mist       #88a4ad;
+@define-color ts_moon       #c4b48a;
+@define-color ts_lantern    #b37a72;
+@define-color ts_pine       #8ca483;
+
+/* libadwaita named colours (GTK 4) */
+@define-color accent_color            @ts_mist;
+@define-color accent_bg_color         @ts_mist;
+@define-color accent_fg_color         @ts_ink;
+@define-color destructive_color       @ts_lantern;
+@define-color destructive_bg_color    @ts_lantern;
+@define-color destructive_fg_color    @ts_ink;
+@define-color success_color           @ts_pine;
+@define-color success_bg_color        @ts_pine;
+@define-color success_fg_color        @ts_ink;
+@define-color warning_color           @ts_moon;
+@define-color warning_bg_color        @ts_moon;
+@define-color warning_fg_color        @ts_ink;
+@define-color error_color             @ts_lantern;
+@define-color error_bg_color          @ts_lantern;
+@define-color error_fg_color          @ts_ink;
+
+@define-color window_bg_color         @ts_ink;
+@define-color window_fg_color         @ts_parchment;
+@define-color view_bg_color           @ts_ink_deep;
+@define-color view_fg_color           @ts_parchment;
+@define-color headerbar_bg_color      @ts_ink;
+@define-color headerbar_fg_color      @ts_parchment;
+@define-color headerbar_border_color  @ts_hairline;
+@define-color headerbar_backdrop_color @ts_ink;
+@define-color headerbar_shade_color   transparent;
+@define-color headerbar_darker_shade_color transparent;
+@define-color sidebar_bg_color        @ts_ink_deep;
+@define-color sidebar_fg_color        @ts_parchment;
+@define-color sidebar_backdrop_color  @ts_ink_deep;
+@define-color sidebar_border_color    @ts_hairline;
+@define-color sidebar_shade_color     transparent;
+@define-color secondary_sidebar_bg_color @ts_ink;
+@define-color secondary_sidebar_fg_color @ts_parchment;
+@define-color card_bg_color           @ts_ink_raised;
+@define-color card_fg_color           @ts_parchment;
+@define-color card_shade_color        alpha(black, 0.25);
+@define-color dialog_bg_color         @ts_ink_raised;
+@define-color dialog_fg_color         @ts_parchment;
+@define-color popover_bg_color        @ts_ink_raised;
+@define-color popover_fg_color        @ts_parchment;
+@define-color popover_shade_color     alpha(black, 0.35);
+@define-color thumbnail_bg_color      @ts_ink_raised;
+@define-color thumbnail_fg_color      @ts_parchment;
+@define-color shade_color             alpha(black, 0.3);
+@define-color scrollbar_outline_color transparent;
+
+/* GTK 3 names */
+@define-color theme_bg_color            @ts_ink;
+@define-color theme_fg_color            @ts_parchment;
+@define-color theme_base_color          @ts_ink_deep;
+@define-color theme_text_color          @ts_parchment;
+@define-color theme_selected_bg_color   @ts_slate;
+@define-color theme_selected_fg_color   @ts_moonlight;
+@define-color insensitive_fg_color      @ts_muted;
+@define-color borders                   @ts_hairline;
+@define-color unfocused_borders         @ts_hairline;
+
+/* Selection: slate, never a loud block of accent */
+selection,
+*:selected,
+row:selected {
+  background-color: alpha(@ts_mist, 0.16);
+  color: @ts_moonlight;
+}
+
+/* Header bars: flat, closed off by a single hairline */
+headerbar {
+  box-shadow: inset 0 -1px @ts_hairline;
+  border: none;
+}
+
+/* Buttons: no fill until touched */
+button {
+  transition: background-color 180ms ease-out, box-shadow 180ms ease-out;
+}
+button.flat:hover,
+button:hover {
+  background-color: alpha(@ts_mist, 0.10);
+}
+button:active,
+button:checked {
+  background-color: alpha(@ts_mist, 0.18);
+}
+button.suggested-action {
+  background-color: alpha(@ts_mist, 0.22);
+  color: @ts_moonlight;
+  box-shadow: inset 0 0 0 1px alpha(@ts_mist, 0.55);
+}
+button.suggested-action:hover {
+  background-color: alpha(@ts_mist, 0.32);
+}
+button.destructive-action {
+  background-color: alpha(@ts_lantern, 0.18);
+  color: @ts_moonlight;
+  box-shadow: inset 0 0 0 1px alpha(@ts_lantern, 0.5);
+}
+
+/* Text fields: a hairline that turns to mist on focus */
+entry,
+spinbutton,
+searchbar entry {
+  background-color: @ts_ink_deep;
+  box-shadow: inset 0 0 0 1px @ts_hairline;
+}
+entry:focus-within,
+entry:focus {
+  box-shadow: inset 0 0 0 1px alpha(@ts_mist, 0.7);
+  outline: none;
+}
+
+/* Keyboard focus: a soft ring instead of the stock blue */
+*:focus-visible {
+  outline-color: alpha(@ts_mist, 0.5);
+}
+
+/* Floating surfaces: raised ink with one hairline */
+popover > contents,
+popover.menu > contents,
+menu,
+.csd.popup decoration,
+tooltip {
+  background-color: @ts_ink_raised;
+  box-shadow: 0 0 0 1px @ts_hairline, 0 10px 28px alpha(black, 0.4);
+}
+tooltip,
+tooltip.background {
+  background-color: @ts_ink_raised;
+  color: @ts_parchment;
+}
+
+/* Lists and sidebars: quiet rows, a slate wash for the chosen one */
+.navigation-sidebar > row:hover,
+list > row:hover {
+  background-color: alpha(@ts_parchment, 0.04);
+}
+.navigation-sidebar > row:selected {
+  background-color: alpha(@ts_mist, 0.14);
+  color: @ts_moonlight;
+}
+
+/* Switches, sliders, progress: the mist line is the only colour */
+switch:checked,
+scale highlight,
+progressbar progress,
+levelbar block.filled {
+  background-color: @ts_mist;
+}
+switch,
+scale trough,
+progressbar trough {
+  background-color: @ts_slate;
+}
+switch slider,
+scale slider {
+  background-color: @ts_moonlight;
+}
+
+/* Scrollbars: a thin thread that wakes on hover */
+scrollbar slider {
+  background-color: alpha(@ts_parchment, 0.18);
+  min-width: 4px;
+  min-height: 4px;
+}
+scrollbar slider:hover {
+  background-color: alpha(@ts_mist, 0.6);
+}
+
+/* Links in the moon's colour, the one warm note */
+link,
+*:link {
+  color: @ts_moon;
+}

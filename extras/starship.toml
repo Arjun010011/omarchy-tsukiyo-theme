@@ -1,0 +1,91 @@
+"$schema" = "https://starship.rs/config-schema.json"
+# Tsukiyo prompt: one quiet line of context, then a mist-coloured caret.
+
+add_newline = true
+format = """
+$directory$git_branch$git_state$git_status$python$nodejs$rust$golang$cmd_duration$fill$time
+$character"""
+
+palette = "tsukiyo"
+
+[palettes.tsukiyo]
+fog = "#4a5a63"
+dim = "#6a7175"
+text = "#b3b0a8"
+mist = "#88a4ad"
+slate = "#7a98ab"
+pine = "#8ca483"
+moon = "#c4b48a"
+ember = "#b37a72"
+lilac = "#9c8898"
+
+[character]
+success_symbol = "[›](mist)"
+error_symbol = "[›](ember)"
+vimcmd_symbol = "[‹](pine)"
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style) "
+style = "text"
+repo_root_style = "bold mist"
+before_repo_root_style = "dim"
+read_only = " 󰌾"
+read_only_style = "fog"
+truncation_length = 3
+truncate_to_repo = true
+truncation_symbol = "…/"
+
+[git_branch]
+format = "[on](fog) [$symbol$branch]($style) "
+symbol = " "
+style = "slate"
+
+[git_state]
+style = "moon"
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+style = "lilac"
+conflicted = "="
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕"
+modified = "~"
+staged = "+"
+untracked = "?"
+deleted = "×"
+stashed = "≡"
+
+[python]
+format = "[via](fog) [${symbol}${version}]($style) "
+symbol = " "
+style = "moon"
+
+[nodejs]
+format = "[via](fog) [$symbol$version]($style) "
+symbol = " "
+style = "pine"
+
+[rust]
+format = "[via](fog) [$symbol$version]($style) "
+symbol = " "
+style = "ember"
+
+[golang]
+format = "[via](fog) [$symbol$version]($style) "
+symbol = " "
+style = "slate"
+
+[cmd_duration]
+min_time = 2000
+format = "[took](fog) [$duration]($style) "
+style = "moon"
+
+[fill]
+symbol = " "
+
+[time]
+disabled = false
+format = "[$time]($style)"
+time_format = "%H:%M"
+style = "fog"
